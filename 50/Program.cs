@@ -8,9 +8,10 @@
 // 8 4 2 4
 // 1,7 -> такого элемента в массиве нет
 
-// Console.WriteLine("Введите элемент двух мерного массива: ");
-// int num1 = Convert.ToInt32(Console.ReadLine());
-// int num2 = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Введите элемент двух мерного массива: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+int colums = Convert.ToInt32(Console.ReadLine());
 
 int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
 {
@@ -41,20 +42,21 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] ValueOutputMatrix(int [,] matrix)
+int ValueOutputMatrix(int[,] matrix)
 {
-    Console.WriteLine("Введите элемент двух мерного массива: ");
-    int num1 = Convert.ToInt32(Console.ReadLine());
-    int num2 = Convert.ToInt32(Console.ReadLine());
     int sum = 0;
-    if (matrix[i] == num1 && matrix[j] == num2) sum = matrix[i, j];  
+    if (rows < matrix.GetLength(0) && colums < matrix.GetLength(1))
+        sum = (matrix[rows, colums]);
     return sum;
 }
 
 int[,] array2D = CreateMatrixRndInt(3, 4, -10, 10);
 PrintMatrix(array2D);
 int res = ValueOutputMatrix(array2D);
-Console.WriteLine(res);
+if (rows < array2D.GetLength(0) && colums < array2D.GetLength(1))
+    Console.WriteLine($"{rows},{colums} -> {res}");
+else
+    Console.WriteLine($"{rows},{colums} -> такого числа в массиве нет");
 
 
 
